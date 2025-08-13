@@ -5,3 +5,7 @@
 
  // Imprime uma mensagem no terminal
  console.log("Ola Daniel !");
+
+ // Exibindo o valor das constantes no terminal
+
+ console.log(`${nome} idade ${idade}`); // exibe o valor no terminal
