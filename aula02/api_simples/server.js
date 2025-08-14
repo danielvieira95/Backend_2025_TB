@@ -9,7 +9,7 @@ const porta = 3000;
 //Lista os dados para armazenar os dados cadastrados
 
 // Middleware para processar a resposta no formato json
-app.use(express.json);
+app.use(express.json());
 
 // cria a rota na raiz da api
 
