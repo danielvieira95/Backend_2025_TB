@@ -9,7 +9,7 @@
  const app = express();
 
  // 3 Define a porta onde a API ira rodar
- const port = 3000;
+ const port = 3001;
 
  // 4 Middleware para permitir que o servidor lide com requisições no formato JSON
  app.use(express.json());
@@ -18,8 +18,14 @@
  // res de resposta 
  app.get('/',(req,res)=>{
     res.send('Api funcionando');
+    
  });
 
+ // cria uma segunda rota 
+ app.get('/disciplina',(req,res)=>{
+    
+    res.send('Desenvolvimento Backend 2025 - Aula 03')
+ });
 
 // 6 Inicia o servidor e define que ele deve rodar na porta especificada 3000
 // app.listen inicia o servidor na porta desejada  declarada anteriormente
