@@ -1,10 +1,10 @@
 const express = require('express'); 
 const cors = require("cors"); 
 const axios = require('axios'); 
-
+require('dotenv').config();
 const app = express(); 
 const PORT = 3000;
-const apiKey = 'cd89347f1b81e95c99cc3aea71dbc494'; 
+const apiKey = process.env.OPENWEATHER_API_KEY; 
 
 app.use(cors());
 
