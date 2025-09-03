@@ -116,8 +116,7 @@ app.get('/alert', async (req, res) => {
     }
 
     try {
-        const response = await axios.get (`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}&units=metric&lang=pt_br`
-        );
+        const response = await axios.get (`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}&units=metric&lang=pt_br`);
 
         const temp = response.data.main?.temp ?? 0;
 
