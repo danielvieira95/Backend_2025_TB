@@ -1,14 +1,12 @@
 // api com utilização da OpenWeather
 
-
+require('dotenv').config(); // pega variaveis de ambiente
 const express = require('express'); // importa a biblioteca express
 const cors = require("cors"); // importa a biblioteca cors para permitir acesso externo
 const axios = require('axios'); // importa  a biblioteca axios
-//require('dotenv').config(); // pega variaveis de ambiente
 const app = express();  // instancia o servidor
 const PORT = 3000; // porta que irá rodar a aplicação
-const apiKey = '46feaf2d6f46008600418771836b4450'
-//process.env.OPENWEATHER_API_KEY; // pega a variavel da chave da api no .env
+const apiKey = process.env.OPENWEATHER_API_KEY; // pega a variavel da chave da api no .env
 
 
 app.use(cors()); // permite acesso externo a api
@@ -116,8 +114,7 @@ app.get('/alert', async (req, res) => {
     }
 
     try {
-        const response = await axios.get (`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}&units=metric&lang=pt_br`
-        );
+        const response = await axios.get (`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}&units=metric&lang=pt_br`);
 
         const temp = response.data.main?.temp ?? 0;
 
@@ -129,4 +126,5 @@ app.get('/alert', async (req, res) => {
         res.status(500).json({ error: 'Erro ao obter dados do clima.'})
     } 
 });
+console.log(process.env.OPENWEATHER_API_KEY);
 app.listen(PORT,()=>console.log(`Servidor rodando em http://localhost:${PORT}/`));
