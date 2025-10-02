@@ -13,7 +13,7 @@ const PORT = 4000;
 app.use(express.json());
 
 // Conecta ao Mongo DB
-mongoose.connect("mongodb://localhost:27017",{
+mongoose.connect("mongodb://localhost:27017/crudMaquina",{
     useNewUrlParser:true,
     useUnifiedTopology:true
 
