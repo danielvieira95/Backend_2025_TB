@@ -5,9 +5,6 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const { z } = require("zod");
 
-
-
-
 const app = express();
 app.use(express.json());
 app.use(helmet());
