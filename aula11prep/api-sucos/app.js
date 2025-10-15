@@ -183,7 +183,6 @@ app.get("/listar-pedidos", (req, res) => {
   return res.json(rows);
 });
 
-// Saúde
 app.get("/", (_req, res) => res.send("API Sucos OK ✅"));
 
 // Start
