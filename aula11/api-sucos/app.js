@@ -67,7 +67,7 @@ app.post("/cadastro-suco",(req,res)=>{
    try{
     const stmt = db.prepare("INSERT INTO sucos (nome,preco) VALUES(?,?)"); // prepara os campos para receber os dados
     const info = stmt.run(nome.trim(),preco);
-    const suco =db.prepare("SELECT *FROM sucos WHERE id = ?").get(info.lastInsertRowid);
+    const suco = db.prepare("SELECT * FROM sucos WHERE id = ?").get(info.lastInsertRowid);
     return res.status(201).json(suco);
    }catch(e){
     if(String(e).includes("UNIQUE")){
@@ -92,7 +92,7 @@ app.get("/cadastro-suco",(_req,res) =>{
 app.post("/pedidos",(req,res)=>{
     const parse = PedidoCreateSchema.safeParse(req.body);
     if(!parse.success){
-        return res.status(400).json({erro: parse.erro});
+        return res.status(400).json({erro: parse.error});
     }
 
     let {suco_id,sabor,quantidade} = parse.data;
@@ -111,7 +111,7 @@ app.post("/pedidos",(req,res)=>{
         return res.status(400).json({erro: "Informe 'suco_id' ou 'sabor' "});
     }
 
-    if(!suco_id){
+    if(suco_id){
         const sucoExiste = db.prepare("SELECT id FROM sucos WHERE id =?").get(suco_id);
         if(!sucoExiste){
             return res.status(404).json({erro: "Suco não encontrado !"});
@@ -149,7 +149,7 @@ app.patch("/ordem-producao/:id",(req,res)=>{
     }
 
     const now = new Date().toISOString();
-    const upd = db.prepare("UPDATE pedidos SET status =?, atualizado em = ?, WHERE id = ?");
+    const upd = db.prepare("UPDATE pedidos SET status =?, atualizado_em = ? WHERE id = ?");
     upd.run(status,now,id);
 
 
@@ -193,7 +193,7 @@ app.get("/listar-pedidos",(req,res)=>{
             JOIN sucos s ON s.id = p.suco_id
             WHERE p.status != 'pronto'
             ORDER BY p.criado_em DESC            
-            `).all(status);
+            `).all();
     }
     return res.json(rows);
 })
