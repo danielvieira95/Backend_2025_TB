@@ -3,7 +3,7 @@
 const { timeStamp } = require("console");
 const mongoose = require("mongoose"); // importa a biblioteca para realizar comunicação com o mongo
 
-const orderSchema = new mongoose.orderSchema({
+const orderSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId, ref:"User",require:true},
         items:[
