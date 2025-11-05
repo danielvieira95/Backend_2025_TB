@@ -8,7 +8,7 @@ const cors =  require("cors");
 const {connectDB} = require("./db");
 
 const app = express(); 
-
+const auth = require("./middleware/auth"); 
 // middlewares globais
 app.use(helmet());
 app.use(cors());

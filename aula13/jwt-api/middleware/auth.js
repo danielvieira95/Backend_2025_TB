@@ -11,7 +11,7 @@ function auth(req,res,next){
     if(!token)return res.status(401).json({error:"Token ausente"});
 
     try{
-        const payload = jwt.verify(token,process.env.JWT_SECRET);
+        const payload = jwt.verify(token,process.env.JWT_SECRETS);
         req.user = {id: payload.sub,email: payload.email, name:payload.name};
         next();
     }catch(err){
