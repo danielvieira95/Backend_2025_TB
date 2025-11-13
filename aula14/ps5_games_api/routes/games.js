@@ -24,6 +24,7 @@ const upload = multer({storage:storage});
 
 // Rota para cadastrar um novo jogo
 
+
 router.post('/',upload.single('image'),async(req,res)=>{
     try{
 
@@ -35,7 +36,7 @@ router.post('/',upload.single('image'),async(req,res)=>{
         await newGame.save();
         console.log(`req: ${req.body}`);
         console.log(`file: ${req.file}`);
-        res.status(201).json({message: 'Jogo cadastrado com sucesso',game:newGame});
+        res.status(201).json({message: 'Jogo cadastrado com sucesso'});
     }catch(error){
         res.status(500).json({message:'Erro ao cadastrar o jogo',error})
     }
