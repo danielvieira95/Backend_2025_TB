@@ -7,7 +7,7 @@ const gameRoutes = require('./routes/games');
 const path = require('path')
 
 const app = express();
-mongoose.connect('urlmongo',{
+mongoose.connect('mongodb+srv://danielvieira2006:Dan100455@cluster0.j1d4z.mongodb.net/ps5_games1',{
     useNewUrlParser:true,useUnifiedTopology:true
 }).then(()=>console.log('Mongodb conectado')).catch(err=>console.error('Erro ao conectar no mongo',err));
 
