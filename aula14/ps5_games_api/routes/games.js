@@ -33,8 +33,8 @@ router.post('/',upload.single('image'),async(req,res)=>{
             name,value,year,rating,image
         });
         await newGame.save();
-        console.log(req.body);
-        console.log(req.files);
+        console.log(`req: ${req.body}`);
+        console.log(`file: ${req.file}`);
         res.status(201).json({message: 'Jogo cadastrado com sucesso',game:newGame});
     }catch(error){
         res.status(500).json({message:'Erro ao cadastrar o jogo',error})
